@@ -1,8 +1,31 @@
 version: '3.8'
 services:
   www:
-    image: nginx:alpine
+    image: wordpress:latest
     container_name: magodavidmaestro
+    depends_on: [database]
     restart: unless-stopped
     ports: [80:80]
-    volumes: [./www:/usr/share/nginx/html]
+    volumes:
+      - ./www:/var/www/html:rw
+    environment:
+      WORDPRESS_DB_HOST: database
+      WORDPRESS_DB_USER: ${DB_USER:-maestrodavid}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-MagoD03sAbracadabra!}
+      WORDPRESS_DB_NAME: ${DB_NAME:-magodavidmaestro}
+
+  database:
+    image: mysql:latest
+    container_name: database
+    restart: unless-stopped
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: random
+      MYSQL_USER: ${DB_USER:-maestrodavid}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-MagoD03sAbracadabra!}
+      MYSQL_DATABASE: ${DB_NAME:-magodavidmaestro}
+    volumes:
+      - database:/var/lib/mysql:rw
+
+volumes:
+  magodavidmaestro: {}
+  database: {}
