@@ -1,11 +1,11 @@
 version: '3.8'
 services:
-  www:
+  magodavidmaestro:
     image: wordpress:latest
+    networks: [proxy]
     container_name: magodavidmaestro
-    depends_on: [database]
+    depends_on: [database,traefik]
     restart: unless-stopped
-    ports: [80:80]
     volumes:
       - ./www:/var/www/html:rw
     environment:
@@ -13,6 +13,13 @@ services:
       WORDPRESS_DB_USER: ${DB_USER:-maestrodavid}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-MagoD03sAbracadabra!}
       WORDPRESS_DB_NAME: ${DB_NAME:-magodavidmaestro}
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.gallery.rule=(Host(`www.magodavidmaestro.com`) || Host(`magodavidmaestro.com`))'
+      - 'traefik.http.routers.gallery.middlewares=security@file,compression@file,jokes@file'
+      - 'traefik.http.routers.gallery.entrypoints=websecure'
+      - 'traefik.http.routers.gallery.tls=true'
+      - 'traefik.http.routers.gallery.tls.certresolver=letsencrypt'
 
   database:
     image: mysql:latest
@@ -27,5 +34,8 @@ services:
       - database:/var/lib/mysql:rw
 
 volumes:
-  magodavidmaestro: {}
   database: {}
+
+networks:
+  proxy:
+    external: true
