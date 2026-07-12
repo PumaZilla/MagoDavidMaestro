@@ -213,3 +213,11 @@
 {"message":"server restarted.","label":"vite","level":"info"}
 {"message":"index.html","label":"watch","level":"info"}
 {"message":"www/index.html","label":"watch","level":"info"}
+{"message":"Configuration file added. Restarting...","label":null,"level":"info"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}

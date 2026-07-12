@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import Manifesto from '../../components/Manifesto.astro';
+import About from '../../components/About.astro';
+import Stats from '../../components/Stats.astro';
+import Shows from '../../components/Shows.astro';
+import Branson from '../../components/Branson.astro';
+import Venues from '../../components/Venues.astro';
+import Reel from '../../components/Reel.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import Faq from '../../components/Faq.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import Notice from '../../components/Notice.astro';
+
+const title = 'David Maestro · Mago Europeo | Eventos Corporativos y Cruceros';
+const description = 'Mago internacional con actuaciones en Europa, América Latina y rutas de cruceros. Entretenedor residente de Virgin Voyages. Finalista de Pura Magia (RTVE) y Got Talent España. Magia de escena para eventos corporativos, teatros y galas. Magia de cerca para bodas y celebraciones privadas. Más de 1.000 shows para audiencias de más de 40 nacionalidades.';
+---
+
+<Base title={title} description={description} lang="es" path="/es/">
+  <Nav lang="es" />
+  <main id="main">
+    <Hero lang="es" />
+    <Manifesto lang="es" />
+    <About lang="es" />
+    <Stats lang="es" />
+    <Shows lang="es" />
+    <Branson lang="es" />
+    <Venues lang="es" />
+    <Reel lang="es" />
+    <Testimonials lang="es" />
+    <Faq lang="es" />
+    <Contact lang="es" />
+  </main>
+  <Footer lang="es" />
+  <Notice lang="es" />
+</Base>

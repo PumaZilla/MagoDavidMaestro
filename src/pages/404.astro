@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404 · David Maestro" description="The page disappeared. As it should." lang="en" path="/404/">
+  <main class="notfound">
+    <div class="container-reading notfound-inner">
+      <p class="notfound-code">404</p>
+      <h1 class="type-display">The page <em>vanished</em>.</h1>
+      <p class="type-body">A magician wouldn't admit it, but: this one was unintentional. Go back home.</p>
+      <a href="/" class="btn btn-primary btn-icon-arrow">Back to home</a>
+    </div>
+  </main>
+
+  <style>
+    .notfound {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background:
+        radial-gradient(circle at 50% 30%, color-mix(in oklch, var(--crimson-deep) 20%, transparent), transparent 60%),
+        var(--surface-ink);
+    }
+    .notfound-inner { display: flex; flex-direction: column; gap: 1.25rem; align-items: center; }
+    .notfound-code {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(6rem, 20vw, 14rem);
+      line-height: 0.85;
+      color: var(--crimson);
+      letter-spacing: -0.06em;
+    }
+    .notfound em { color: var(--crimson); font-style: italic; }
+    .notfound .type-body { max-width: 40ch; margin-inline: auto; }
+    .notfound .btn { margin-top: 1rem; }
+  </style>
+</Base>

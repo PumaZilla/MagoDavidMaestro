@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Manifesto from '../components/Manifesto.astro';
+import About from '../components/About.astro';
+import Stats from '../components/Stats.astro';
+import Shows from '../components/Shows.astro';
+import Branson from '../components/Branson.astro';
+import Venues from '../components/Venues.astro';
+import Reel from '../components/Reel.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import Notice from '../components/Notice.astro';
+
+const title = 'David Maestro · European Magician | Corporate Events & Cruise Ships';
+const description = 'International magician performing across Europe, Latin America and cruise routes. Resident entertainer for Virgin Voyages. Finalist on Pura Magia (RTVE) and Spain\'s Got Talent. Stage magic for corporate events, theatres and galas. Close-up magic for weddings and private celebrations. Over 1,000 shows for audiences from 40+ nationalities.';
+---
+
+<Base title={title} description={description} lang="en" path="/">
+  <Nav lang="en" />
+  <main id="main">
+    <Hero lang="en" />
+    <Manifesto lang="en" />
+    <About lang="en" />
+    <Stats lang="en" />
+    <Shows lang="en" />
+    <Branson lang="en" />
+    <Venues lang="en" />
+    <Reel lang="en" />
+    <Testimonials lang="en" />
+    <Faq lang="en" />
+    <Contact lang="en" />
+  </main>
+  <Footer lang="en" />
+  <Notice lang="en" />
+</Base>

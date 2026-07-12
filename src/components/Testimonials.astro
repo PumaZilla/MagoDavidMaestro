@@ -1,0 +1,241 @@
+---
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    kicker: 'Testimonios',
+    title: 'Lo que dijeron cuando terminó el truco.',
+    quotes: [
+      {
+        text: 'Esto no lo había visto nunca antes. Increíble.',
+        author: 'Risto Mejide',
+        role: 'Got Talent España',
+      },
+      {
+        text: 'Lo que acaba de pasar aquí, no tiene sentido.',
+        author: 'Edurne',
+        role: 'Got Talent España',
+      },
+      {
+        text: 'Yo he trabajado con magos… pero esto que acabas de hacer es espectacular.',
+        author: 'Paz Padilla',
+        role: 'Pura Magia · RTVE',
+      },
+      {
+        text: 'Esto es absolutamente imposible.',
+        author: 'Mónica Naranjo',
+        role: 'Got Talent España',
+      },
+      {
+        text: 'One of the best shows I\'ve ever seen.',
+        author: 'Sir Richard Branson',
+        role: 'Fundador de Virgin Group',
+      },
+    ],
+  },
+  en: {
+    kicker: 'Praise',
+    title: 'What they said when the trick ended.',
+    quotes: [
+      {
+        text: 'I have never seen anything like this before. Incredible.',
+        author: 'Risto Mejide',
+        role: 'Spain\'s Got Talent',
+      },
+      {
+        text: 'What just happened here makes no sense.',
+        author: 'Edurne',
+        role: 'Spain\'s Got Talent',
+      },
+      {
+        text: 'I have worked with magicians before… but what you just did is spectacular.',
+        author: 'Paz Padilla',
+        role: 'Pura Magia · RTVE',
+      },
+      {
+        text: 'This is absolutely impossible.',
+        author: 'Mónica Naranjo',
+        role: 'Spain\'s Got Talent',
+      },
+      {
+        text: 'One of the best shows I\'ve ever seen.',
+        author: 'Sir Richard Branson',
+        role: 'Founder of Virgin Group',
+      },
+    ],
+  },
+}[lang];
+---
+
+<section class="testimonials section" id="testimonios" aria-labelledby="testimonials-title">
+  <div class="container">
+    <header class="testimonials-header">
+      <div class="kicker reveal">
+        <span class="kicker-line"></span>
+        <span>{t.kicker}</span>
+      </div>
+      <h2 id="testimonials-title" class="type-display reveal reveal-delay-1">{t.title}</h2>
+    </header>
+  </div>
+
+  <div class="testimonials-marquee" aria-label="Testimonials">
+    <div class="testimonials-track">
+      {[...t.quotes, ...t.quotes].map((q) => (
+        <figure class="testimonial-card">
+          <div class="testimonial-quote-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 30" fill="currentColor" width="40" height="30">
+              <path d="M0 30V16C0 7 4 2 12 0v6c-3 1-5 4-5 8h5v16H0zm23 0V16c0-9 4-14 12-16v6c-3 1-5 4-5 8h5v16H23z"/>
+            </svg>
+          </div>
+          <blockquote>
+            <p>{q.text}</p>
+          </blockquote>
+          <figcaption>
+            <span class="testimonial-author">{q.author}</span>
+            <span class="testimonial-role">{q.role}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: linear-gradient(
+      180deg,
+      var(--surface-ink) 0%,
+      oklch(0.1 0.014 25) 20%,
+      oklch(0.1 0.014 25) 80%,
+      var(--surface-ink) 100%
+    );
+    padding-block: clamp(4rem, 8vw, 7rem);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .testimonials::before {
+    content: '';
+    position: absolute;
+    inset: auto -5% auto auto;
+    top: 8%;
+    width: min(48rem, 55vw);
+    aspect-ratio: 3 / 2;
+    background: url('/img/textures/cards.webp') center / cover no-repeat;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    opacity: 0.35;
+    z-index: -1;
+    pointer-events: none;
+    filter: contrast(1.1);
+  }
+
+  .testimonials-header {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+  }
+
+  .testimonials-marquee {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  }
+
+  .testimonials-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: testimonialSlide 55s linear infinite;
+    padding-inline: var(--gutter);
+  }
+
+  .testimonials-marquee:hover .testimonials-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes testimonialSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .testimonial-card {
+    flex-shrink: 0;
+    width: min(28rem, 85vw);
+    padding: 2rem;
+    background: var(--surface-raised);
+    border: 1px solid var(--stroke-soft);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--dur-med), transform var(--dur-med) var(--ease-out-quart);
+  }
+
+  .testimonial-card:hover {
+    border-color: var(--stroke-medium);
+    transform: translateY(-3px);
+  }
+
+  .testimonial-quote-mark {
+    color: var(--crimson);
+    opacity: 0.9;
+  }
+
+  blockquote {
+    margin: 0;
+  }
+
+  blockquote p {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.4;
+    color: var(--ink-primary);
+    letter-spacing: -0.01em;
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--stroke-soft);
+  }
+
+  .testimonial-author {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink-primary);
+    letter-spacing: 0.02em;
+  }
+
+  .testimonial-role {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+</style>

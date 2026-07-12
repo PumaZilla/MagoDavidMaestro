@@ -1,0 +1,354 @@
+---
+import Spade from './Spade.astro';
+
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    about: 'Sobre mí',
+    shows: 'Los shows',
+    reel: 'Media',
+    press: 'Testimonios',
+    faq: 'Dudas',
+    contact: 'Contacto',
+    book: 'Reservar show',
+    switchLang: 'EN',
+    switchHref: '/',
+    home: '/es/',
+    menu: 'Menú',
+    close: 'Cerrar',
+  },
+  en: {
+    about: 'About',
+    shows: 'The shows',
+    reel: 'Media',
+    press: 'Praise',
+    faq: 'FAQ',
+    contact: 'Contact',
+    book: 'Book a show',
+    switchLang: 'ES',
+    switchHref: '/es/',
+    home: '/',
+    menu: 'Menu',
+    close: 'Close',
+  },
+}[lang];
+---
+
+<header class="nav" data-nav>
+  <div class="nav-inner">
+    <a href={t.home} class="nav-brand" aria-label="David Maestro — Home">
+      <span class="nav-brand-mark" aria-hidden="true">
+        <Spade size={22} />
+      </span>
+      <span class="nav-brand-word">
+        <span class="nav-brand-first">David</span>
+        <span class="nav-brand-last">Maestro</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#sobre-mi">{t.about}</a>
+      <a href="#shows">{t.shows}</a>
+      <a href="#reel">{t.reel}</a>
+      <a href="#preguntas">{t.faq}</a>
+      <a href="#contacto">{t.contact}</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href={t.switchHref} class="nav-lang" aria-label={`Change language to ${t.switchLang}`}>
+        <span>{t.switchLang}</span>
+      </a>
+      <a href="#contacto" class="btn btn-primary nav-cta" data-magnetic>{t.book}</a>
+      <button
+        class="nav-menu-toggle"
+        type="button"
+        aria-label={t.menu}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-menu" id="mobile-menu" data-menu>
+  <nav aria-label="Mobile" class="nav-menu-links">
+    <a href="#sobre-mi"><span>01</span>{t.about}</a>
+    <a href="#shows"><span>02</span>{t.shows}</a>
+    <a href="#reel"><span>03</span>{t.reel}</a>
+    <a href="#preguntas"><span>04</span>{t.faq}</a>
+    <a href="#contacto"><span>05</span>{t.contact}</a>
+  </nav>
+  <div class="nav-menu-foot">
+    <a href={t.switchHref} class="link-inline">{lang === 'es' ? 'English version' : 'Versión española'}</a>
+    <a href="https://wa.me/34677652984" class="link-inline">WhatsApp +34 677 652 984</a>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: var(--z-nav);
+    padding-block: 1rem;
+    transition: padding-block var(--dur-med) var(--ease-out-quart), background-color var(--dur-med) var(--ease-out-quart), border-color var(--dur-med) var(--ease-out-quart);
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, oklch(0.08 0.010 25 / 0.5), transparent);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity var(--dur-med);
+  }
+
+  .nav.is-scrolled::before { opacity: 0; }
+
+  .nav.is-scrolled,
+  .nav.is-menu-open {
+    background: color-mix(in oklch, var(--surface-ink) 78%, transparent);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom-color: var(--stroke-soft);
+  }
+
+  .nav.is-scrolled {
+    padding-block: 0.6rem;
+  }
+
+  .nav-inner {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-primary);
+    text-decoration: none;
+  }
+
+  .nav-brand-mark {
+    display: inline-flex;
+    color: var(--crimson);
+  }
+
+  .nav-brand-word {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .nav-brand-last {
+    color: var(--crimson);
+  }
+
+  .nav-links {
+    display: none;
+    gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    align-items: center;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a {
+    color: var(--ink-muted);
+    position: relative;
+    padding: 0.4rem 0;
+    transition: color var(--dur-fast) var(--ease-out-quart);
+  }
+
+  .nav-links a:hover {
+    color: var(--ink-primary);
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -2px auto;
+    width: 0;
+    height: 1px;
+    background: var(--crimson);
+    transition: width var(--dur-med) var(--ease-out-quart);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+
+  @media (min-width: 900px) {
+    .nav-links { display: inline-flex; }
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .nav-lang {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--stroke-medium);
+    color: var(--ink-muted);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    transition: color var(--dur-fast), border-color var(--dur-fast), background-color var(--dur-fast);
+  }
+
+  .nav-lang:hover {
+    color: var(--ink-primary);
+    border-color: var(--ink-primary);
+    background: var(--surface-raised);
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .nav-cta { display: inline-flex; }
+  }
+
+  .nav-menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--stroke-medium);
+    background: transparent;
+  }
+
+  .nav-menu-toggle span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--ink-primary);
+    transition: transform var(--dur-fast) var(--ease-out-quart), opacity var(--dur-fast);
+    transform-origin: center;
+  }
+
+  .nav-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  @media (min-width: 900px) {
+    .nav-menu-toggle { display: none; }
+  }
+
+  .nav-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--surface-ink);
+    padding-top: 6rem;
+    padding-inline: var(--gutter);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 3rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity var(--dur-med) var(--ease-out-quart), transform var(--dur-med) var(--ease-out-quart);
+    z-index: 10;
+  }
+
+  .nav-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .nav-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 90rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .nav-menu-links a {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    color: var(--ink-primary);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    padding-block: 0.4rem;
+    border-bottom: 1px solid var(--stroke-soft);
+    transition: color var(--dur-fast);
+  }
+
+  .nav-menu-links a:hover {
+    color: var(--crimson);
+  }
+
+  .nav-menu-links a span {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-quiet);
+    letter-spacing: 0.1em;
+    min-width: 2rem;
+  }
+
+  .nav-menu-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  @media (min-width: 900px) {
+    .nav-menu { display: none; }
+  }
+</style>

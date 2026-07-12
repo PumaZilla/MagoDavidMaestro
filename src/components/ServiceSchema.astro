@@ -1,0 +1,113 @@
+---
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'en' } = Astro.props;
+const siteUrl = 'https://magodavidmaestro.com';
+
+const stageService = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: lang === 'es' ? 'Espectáculo de Magia de Escena' : 'Stage Magic Performance',
+  name: lang === 'es' ? 'Espectáculo de Magia de Escena' : 'Stage Magic Show',
+  description: lang === 'es'
+    ? 'Un espectáculo diseñado para escenario. Grandes ilusiones, momentos de mentalismo, humor seco y un ritmo que respira. Se adapta al sonido e iluminación del local, o llega con equipo propio.'
+    : 'A show designed for a stage. Grand illusions, moments of mentalism, dry humour, and a rhythm that breathes. Adapts to your venue\'s sound and lights, or arrives with its own rig.',
+  provider: {
+    '@type': 'EntertainmentBusiness',
+    '@id': `${siteUrl}/#organization`,
+    name: 'David Maestro',
+  },
+  areaServed: [
+    {
+      '@type': 'Place',
+      name: lang === 'es' ? 'Europa' : 'Europe',
+    },
+    {
+      '@type': 'Place',
+      name: lang === 'es' ? 'América Latina' : 'Latin America',
+    },
+    {
+      '@type': 'Country',
+      name: lang === 'es' ? 'España' : 'Spain',
+    },
+    {
+      '@type': 'Place',
+      name: lang === 'es' ? 'Rutas de Cruceros Internacionales' : 'International Cruise Routes',
+    },
+  ],
+  availableLanguage: ['es', 'en', 'gl'],
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      priceCurrency: 'EUR',
+    },
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: lang === 'es' ? 'Audiencias adultas y mixtas (12+)' : 'Adult and mixed audiences (12+)',
+    suggestedMinAge: 12,
+    suggestedMaxAge: 99,
+  },
+  duration: 'PT45M',
+  category: lang === 'es' ? 'Entretenimiento' : 'Entertainment',
+  termsOfService: `${siteUrl}/legal/`,
+};
+
+const cocktailService = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: lang === 'es' ? 'Magia de Cerca' : 'Close-up Magic Performance',
+  name: lang === 'es' ? 'Magia Cocktail' : 'Cocktail Magic',
+  description: lang === 'es'
+    ? 'Magia a un palmo del público. Perfecta para eventos privados, restaurantes, bodas y celebraciones donde los invitados se mueven libremente. Pases cortos, mesa por mesa.'
+    : 'Magic a hand\'s width from the audience. Perfect for private events, restaurants, weddings and celebrations where guests move freely. Short sets, table by table.',
+  provider: {
+    '@type': 'EntertainmentBusiness',
+    '@id': `${siteUrl}/#organization`,
+    name: 'David Maestro',
+  },
+  areaServed: [
+    {
+      '@type': 'Place',
+      name: lang === 'es' ? 'Europa' : 'Europe',
+    },
+    {
+      '@type': 'Place',
+      name: lang === 'es' ? 'América Latina' : 'Latin America',
+    },
+    {
+      '@type': 'Country',
+      name: lang === 'es' ? 'España' : 'Spain',
+    },
+    {
+      '@type': 'Place',
+      name: lang === 'es' ? 'Rutas de Cruceros Internacionales' : 'International Cruise Routes',
+    },
+  ],
+  availableLanguage: ['es', 'en', 'gl'],
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      priceCurrency: 'EUR',
+    },
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: lang === 'es'
+      ? 'Eventos privados, bodas, cócteles corporativos, restaurantes'
+      : 'Private events, weddings, corporate cocktails, restaurants',
+  },
+  duration: 'PT10M',
+  category: lang === 'es' ? 'Entretenimiento' : 'Entertainment',
+  termsOfService: `${siteUrl}/legal/`,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(stageService)} />
+<script type="application/ld+json" set:html={JSON.stringify(cocktailService)} />

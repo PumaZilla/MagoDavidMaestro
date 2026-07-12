@@ -1,0 +1,94 @@
+---
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'en' } = Astro.props;
+const siteUrl = 'https://magodavidmaestro.com';
+
+const videos = {
+  es: [
+    {
+      id: 'eROBHCC36xk',
+      name: 'David Maestro - Trailer 2026',
+      description: 'Tráiler oficial 2026 de David Maestro, mago e ilusionista. Magia de escena y close-up para eventos corporativos, teatros y celebraciones privadas.',
+      uploadDate: '2026-01-15',
+      duration: 'PT2M30S', // 2:30
+    },
+    {
+      id: 'hrg_9QQrZgQ',
+      name: 'David Maestro - Recap 2026',
+      description: 'Resumen de actuaciones 2026 de David Maestro: Virgin Voyages, eventos corporativos y shows de escena en Europa y América Latina.',
+      uploadDate: '2026-06-01',
+      duration: 'PT3M15S', // 3:15
+    },
+    {
+      id: '3AVY_8l8sz0',
+      name: 'David Maestro - Trailer 2025',
+      description: 'Tráiler 2025 de David Maestro. Finalista de Got Talent España y Pura Magia (RTVE). Magia de escena y close-up.',
+      uploadDate: '2025-01-10',
+      duration: 'PT2M45S', // 2:45
+    },
+    {
+      id: 'mt68nUVAWn8',
+      name: 'David Maestro - Promo TV',
+      description: 'Promo televisivo de David Maestro. Actuaciones en Got Talent España y Pura Magia (RTVE).',
+      uploadDate: '2024-11-20',
+      duration: 'PT1M30S', // 1:30
+    },
+  ],
+  en: [
+    {
+      id: 'eROBHCC36xk',
+      name: 'David Maestro - Trailer 2026',
+      description: 'Official 2026 trailer for David Maestro, magician and illusionist. Stage magic and close-up for corporate events, theatres, and private celebrations.',
+      uploadDate: '2026-01-15',
+      duration: 'PT2M30S',
+    },
+    {
+      id: 'hrg_9QQrZgQ',
+      name: 'David Maestro - Recap 2026',
+      description: '2026 performance recap of David Maestro: Virgin Voyages, corporate events, and stage shows across Europe and Latin America.',
+      uploadDate: '2026-06-01',
+      duration: 'PT3M15S',
+    },
+    {
+      id: '3AVY_8l8sz0',
+      name: 'David Maestro - Trailer 2025',
+      description: '2025 trailer for David Maestro. Finalist on Spain\'s Got Talent and Pura Magia (RTVE). Stage and close-up magic.',
+      uploadDate: '2025-01-10',
+      duration: 'PT2M45S',
+    },
+    {
+      id: 'mt68nUVAWn8',
+      name: 'David Maestro - TV Promo',
+      description: 'TV promo for David Maestro. Performances on Spain\'s Got Talent and Pura Magia (RTVE).',
+      uploadDate: '2024-11-20',
+      duration: 'PT1M30S',
+    },
+  ],
+};
+
+const videoSchemas = videos[lang].map((video) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: video.name,
+  description: video.description,
+  thumbnailUrl: `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`,
+  uploadDate: video.uploadDate,
+  duration: video.duration,
+  contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+  embedUrl: `https://www.youtube.com/embed/${video.id}`,
+  publisher: {
+    '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
+    name: 'David Maestro',
+    url: siteUrl,
+  },
+}));
+---
+
+<!-- Video Schemas -->
+{videoSchemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

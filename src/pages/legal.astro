@@ -1,0 +1,362 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Notice from '../components/Notice.astro';
+
+const title = 'Legal · David Maestro';
+const description = 'Legal notice, privacy policy and cookie policy for magodavidmaestro.com.';
+const updated = 'July 2026';
+---
+
+<Base title={title} description={description} lang="en" path="/legal/">
+  <Nav lang="en" />
+
+  <main id="main" class="legal">
+    <div class="container-reading legal-inner">
+      <header class="legal-header">
+        <div class="kicker">
+          <span class="kicker-line"></span>
+          <span>Legal</span>
+        </div>
+        <h1 class="type-display legal-title">The formal small print.</h1>
+        <p class="legal-updated">Last updated: {updated}</p>
+        <nav class="legal-toc" aria-label="On this page">
+          <a href="#legal-notice">Legal notice</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#cookies">Cookies</a>
+        </nav>
+      </header>
+
+      <section id="legal-notice" class="legal-section">
+        <h2 class="type-heading">Legal notice</h2>
+        <p>
+          In accordance with article 10 of Spain&apos;s LSSI-CE (Law 34/2002, on
+          services of the information society and electronic commerce), the
+          following information is provided about the person responsible for
+          this site.
+        </p>
+        <dl class="legal-dl">
+          <dt>Owner</dt><dd>David Maestro Fernández</dd>
+          <dt>Activity</dt><dd>Illusionist and professional magician</dd>
+          <dt>Address</dt><dd>A Coruña, 15006, Spain</dd>
+          <dt>Email</dt><dd><a href="mailto:info@magodavidmaestro.com">info@magodavidmaestro.com</a></dd>
+          <dt>Site</dt><dd><a href="https://magodavidmaestro.com">magodavidmaestro.com</a></dd>
+        </dl>
+        <p>
+          By using this site you agree to the terms below. The content —
+          copy, imagery, video and design — is the property of David Maestro
+          unless otherwise stated, and it is protected under Spanish and
+          international intellectual property law. Reuse for commercial
+          purposes requires prior written permission.
+        </p>
+      </section>
+
+      <section id="privacy" class="legal-section">
+        <h2 class="type-heading">Privacy policy</h2>
+        <p>
+          This section explains how your data is handled when you use this
+          website. It follows the EU General Data Protection Regulation
+          (Regulation 2016/679, &ldquo;GDPR&rdquo;) and Spain&apos;s LOPDGDD (Organic Law
+          3/2018).
+        </p>
+
+        <h3>Data controller</h3>
+        <p>David Maestro Fernández. Contact: info@magodavidmaestro.com.</p>
+
+        <h3>What is collected</h3>
+        <ul class="legal-list">
+          <li>
+            <strong>Contact form.</strong> The form on the Contact section
+            asks for your name, email, event type, event date and message.
+            Submissions are processed by FormSubmit (Bluebeam LLC) and
+            delivered to David&apos;s email inbox. See the
+            <a href="https://formsubmit.co/">FormSubmit</a> service for its
+            own terms.
+          </li>
+          <li>
+            <strong>Anonymous analytics.</strong> If you accept cookies, the
+            site loads Google Tag Manager (container GTM-MMJBJ7N6), which in
+            turn loads Google Analytics 4 with IP anonymisation. It records
+            aggregated visit information (pages, referrer, device class,
+            approximate country). No personal identifiers are stored.
+          </li>
+          <li>
+            <strong>Server logs.</strong> The site is hosted by GitHub Pages,
+            which keeps access logs for its own security purposes. See the
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.
+          </li>
+        </ul>
+
+        <h3>Legal basis and purpose</h3>
+        <ul class="legal-list">
+          <li>Contact form data: legitimate interest and pre-contractual measures. Kept as long as necessary to answer the enquiry and any resulting engagement.</li>
+          <li>Analytics: consent, freely given via the cookie banner. Revocable at any time.</li>
+        </ul>
+
+        <h3>Sharing</h3>
+        <p>
+          Data is not sold. It is only shared with the processors named
+          above (FormSubmit, Google, GitHub) which act as data processors
+          under their own compliance frameworks. Google may transfer
+          anonymised data to servers outside the EU under the
+          EU–US Data Privacy Framework.
+        </p>
+
+        <h3>Your rights</h3>
+        <p>
+          Under GDPR you have the right to access, rectify, delete, restrict
+          processing, portability and objection. To exercise any of these,
+          write to <a href="mailto:info@magodavidmaestro.com">info@magodavidmaestro.com</a>.
+          You may also file a complaint with the Spanish Data Protection
+          Authority (AEPD, <a href="https://www.aepd.es">aepd.es</a>).
+        </p>
+      </section>
+
+      <section id="cookies" class="legal-section">
+        <h2 class="type-heading">Cookie policy</h2>
+        <p>
+          Cookies are small text files a site places on your device. This
+          site uses two categories:
+        </p>
+
+        <div class="legal-cookies-grid">
+          <div class="legal-cookie">
+            <h3>Essential</h3>
+            <p>Required for the site to work. Currently: only the
+              <code>cookie-consent</code> preference stored in localStorage,
+              which remembers whether you accepted or rejected analytics.</p>
+          </div>
+          <div class="legal-cookie">
+            <h3>Analytics</h3>
+            <p>Loaded only if you press <em>Accept</em> on the cookie banner.
+              Delivered by Google Tag Manager (container GTM-MMJBJ7N6), which
+              in turn fires Google Analytics 4. Cookies: <code>_ga</code>,
+              <code>_ga_*</code>. Purpose: aggregate audience insight, with
+              IP anonymisation. Storage duration: up to 24 months.</p>
+          </div>
+        </div>
+
+        <h3>Managing your choice</h3>
+        <p>
+          You can change your mind any time by clearing the
+          <code>cookie-consent</code> key in your browser storage (Developer
+          Tools → Application → Local Storage), or by pressing
+          <button type="button" class="legal-inline-btn" data-cookie-reopen>reopen the banner</button>.
+        </p>
+      </section>
+
+      <p class="legal-back">
+        <a href="/" class="link-inline">← Back to home</a>
+      </p>
+    </div>
+  </main>
+
+  <Footer lang="en" />
+  <Notice lang="en" />
+
+  <script is:inline>
+    document.addEventListener('click', function (e) {
+      var target = e.target;
+      if (target && target.matches && target.matches('[data-cookie-reopen]')) {
+        try { localStorage.removeItem('cookie-consent'); } catch (err) {}
+        location.reload();
+      }
+    });
+  </script>
+
+  <style>
+    .legal {
+      background: var(--surface-ink);
+      padding-block: clamp(6rem, 12vh, 9rem) clamp(4rem, 8vw, 7rem);
+    }
+
+    .legal-inner {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .legal-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--stroke-soft);
+    }
+
+    .legal-title {
+      max-width: 22ch;
+    }
+
+    .legal-updated {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--ink-quiet);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .legal-toc {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      padding-top: 1rem;
+    }
+
+    .legal-toc a {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--stroke-soft);
+      transition: color var(--dur-fast), border-color var(--dur-fast);
+    }
+
+    .legal-toc a:hover {
+      color: var(--ink-primary);
+      border-color: var(--stroke-strong);
+    }
+
+    .legal-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      scroll-margin-top: 6rem;
+    }
+
+    .legal-section h3 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 0.75rem;
+    }
+
+    .legal-section p,
+    .legal-section li {
+      font-family: var(--font-body);
+      color: var(--ink-body);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .legal-section a {
+      color: var(--ink-primary);
+      text-decoration: underline;
+      text-decoration-color: var(--crimson);
+      text-underline-offset: 3px;
+      transition: color var(--dur-fast);
+    }
+
+    .legal-section a:hover { color: var(--crimson); }
+
+    .legal-section strong {
+      color: var(--ink-primary);
+    }
+
+    .legal-list {
+      padding-left: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 60ch;
+    }
+
+    .legal-list li::marker {
+      color: var(--crimson);
+    }
+
+    .legal-dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0.4rem 1.5rem;
+      max-width: 60ch;
+      padding: 1rem 0;
+      border-top: 1px solid var(--stroke-soft);
+      border-bottom: 1px solid var(--stroke-soft);
+    }
+
+    .legal-dl dt {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-quiet);
+      align-self: center;
+    }
+
+    .legal-dl dd {
+      margin: 0;
+      color: var(--ink-primary);
+      font-size: 0.9rem;
+    }
+
+    .legal-cookies-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      .legal-cookies-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .legal-cookie {
+      background: color-mix(in oklch, var(--surface-raised) 55%, transparent);
+      border: 1px solid var(--stroke-soft);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    .legal-cookie h3 {
+      margin: 0 0 0.5rem;
+      color: var(--ink-primary);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+
+    .legal-cookie p {
+      margin: 0;
+      color: var(--ink-body);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+      font-size: 0.85em;
+      background: color-mix(in oklch, var(--surface-lifted) 60%, transparent);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      color: var(--ink-primary);
+    }
+
+    .legal-inline-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--ink-primary);
+      text-decoration: underline;
+      text-decoration-color: var(--crimson);
+      text-underline-offset: 3px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .legal-inline-btn:hover { color: var(--crimson); }
+
+    .legal-back {
+      padding-top: 1rem;
+      border-top: 1px solid var(--stroke-soft);
+    }
+  </style>
+</Base>

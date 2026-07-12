@@ -1,0 +1,270 @@
+---
+import '@fontsource-variable/bodoni-moda';
+import '@fontsource-variable/bodoni-moda/wght-italic.css';
+import '@fontsource-variable/manrope';
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import ServiceSchema from '../components/ServiceSchema.astro';
+import ReviewSchema from '../components/ReviewSchema.astro';
+import VideoSchema from '../components/VideoSchema.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  lang?: 'es' | 'en';
+  path?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  lang = 'en',
+  path = '/',
+  ogImage = '/img/hero.jpg',
+} = Astro.props;
+
+const siteUrl = 'https://magodavidmaestro.com';
+const canonical = `${siteUrl}${path}`;
+const skipCopy = lang === 'es' ? 'Saltar al contenido' : 'Skip to content';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1c0e0e" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/`} />
+    <link rel="alternate" hreflang="es" href={`${siteUrl}/es/`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    {lang === 'en' && <meta property="og:locale:alternate" content="es_ES" />}
+    {lang === 'es' && <meta property="og:locale:alternate" content="en_US" />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Resource hints for third-party connections -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+    <!-- Preload hero image for faster LCP -->
+    <link rel="preload" as="image" href="/img/hero.jpg" fetchpriority="high" />
+
+    <!-- Consent Mode v2 defaults — must run before GTM boots -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      var stored = null;
+      try { stored = localStorage.getItem('cookie-consent'); } catch (e) {}
+      var granted = stored === 'granted';
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: granted ? 'granted' : 'denied',
+        wait_for_update: 500,
+      });
+    </script>
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MMJBJ7N6');</script>
+    <!-- End Google Tag Manager -->
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'EntertainmentBusiness',
+      '@id': `${siteUrl}/#organization`,
+      name: 'David Maestro',
+      alternateName: 'Mago David Maestro',
+      description: lang === 'es'
+        ? 'Mago e ilusionista internacional con actuaciones en Europa, América Latina y rutas de cruceros. Magia de escena para eventos corporativos, teatros y galas. Magia de cerca para bodas y celebraciones privadas. Entretenedor residente de Virgin Voyages.'
+        : 'International magician and illusionist performing across Europe, Latin America and cruise routes. Stage magic for corporate events, theatres and galas. Close-up magic for weddings and private celebrations. Resident entertainer for Virgin Voyages.',
+      url: siteUrl,
+      logo: `${siteUrl}/img/hero.jpg`,
+      image: [
+        `${siteUrl}/img/hero.jpg`,
+        `${siteUrl}/img/stage.jpg`,
+        `${siteUrl}/img/cocktail.jpg`,
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'ES',
+      },
+      telephone: '+34 677 652 984',
+      email: 'info@magodavidmaestro.com',
+      priceRange: '€€€',
+      areaServed: [
+        {
+          '@type': 'Place',
+          name: lang === 'es' ? 'Europa' : 'Europe',
+        },
+        {
+          '@type': 'Place',
+          name: lang === 'es' ? 'América Latina' : 'Latin America',
+        },
+        {
+          '@type': 'Country',
+          name: lang === 'es' ? 'España' : 'Spain',
+        },
+        {
+          '@type': 'Place',
+          name: lang === 'es' ? 'Rutas de Cruceros Internacionales' : 'International Cruise Routes',
+        },
+      ],
+      serviceType: lang === 'es'
+        ? ['Magia de Escena', 'Magia de Cerca', 'Ilusionismo', 'Entretenimiento Corporativo', 'Entretenimiento para Bodas', 'Espectáculos de Teatro']
+        : ['Stage Magic', 'Close-up Magic', 'Illusionism', 'Corporate Entertainment', 'Wedding Entertainment', 'Theatre Shows'],
+      sameAs: [
+        'https://www.instagram.com/davidmaestromago',
+        'https://www.facebook.com/davidmaestromago',
+      ],
+      founder: {
+        '@type': 'Person',
+        '@id': `${siteUrl}/#person`,
+        name: 'David Maestro',
+        jobTitle: lang === 'es' ? 'Mago e Ilusionista Profesional' : 'Professional Magician and Illusionist',
+        birthDate: '1997',
+        birthPlace: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'A Coruña',
+            addressCountry: 'ES',
+          },
+        },
+        knowsLanguage: [
+          {
+            '@type': 'Language',
+            name: lang === 'es' ? 'Español' : 'Spanish',
+            alternateName: 'es',
+          },
+          {
+            '@type': 'Language',
+            name: lang === 'es' ? 'Inglés' : 'English',
+            alternateName: 'en',
+          },
+          {
+            '@type': 'Language',
+            name: lang === 'es' ? 'Gallego' : 'Galician',
+            alternateName: 'gl',
+          },
+        ],
+        award: [
+          'Finalist - Pura Magia (RTVE)',
+          'Finalist - Spain\'s Got Talent',
+          'Resident Magician - Virgin Voyages',
+        ],
+      },
+    })} />
+    <ServiceSchema lang={lang} />
+    <ReviewSchema lang={lang} />
+    <VideoSchema lang={lang} />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMJBJ7N6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a href="#main" class="skip-link">{skipCopy}</a>
+    <slot />
+
+    <script>
+      // Progressive-enhancement JS. Reveal-on-scroll, nav state, marquee pause, cursor.
+      document.documentElement.classList.add('js-loaded');
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Reveal on intersection
+      if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // Nav scrolled state
+      const nav = document.querySelector('[data-nav]') as HTMLElement | null;
+      if (nav) {
+        const onScroll = () => {
+          if (window.scrollY > 24) nav.classList.add('is-scrolled');
+          else nav.classList.remove('is-scrolled');
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+
+      // Mobile menu
+      const menuBtn = document.querySelector('[data-menu-toggle]') as HTMLButtonElement | null;
+      const menuOverlay = document.querySelector('[data-menu]') as HTMLElement | null;
+      if (menuBtn && menuOverlay) {
+        const closeMenu = () => {
+          menuOverlay.classList.remove('is-open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          if (nav) nav.classList.remove('is-menu-open');
+        };
+        menuBtn.addEventListener('click', () => {
+          const open = menuOverlay.classList.toggle('is-open');
+          menuBtn.setAttribute('aria-expanded', String(open));
+          document.body.style.overflow = open ? 'hidden' : '';
+          if (nav) {
+            if (open) nav.classList.add('is-menu-open');
+            else nav.classList.remove('is-menu-open');
+          }
+        });
+        menuOverlay.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMenu();
+        });
+      }
+
+      // Magnetic effect on primary buttons
+      if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+        document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((el) => {
+          el.addEventListener('pointermove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const mx = (e.clientX - rect.left - rect.width / 2) * 0.25;
+            const my = (e.clientY - rect.top - rect.height / 2) * 0.35;
+            el.style.transform = `translate(${mx}px, ${my}px)`;
+          });
+          el.addEventListener('pointerleave', () => {
+            el.style.transform = '';
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+---
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    kicker: 'Dudas frecuentes',
+    title: 'Antes de escribir.',
+    lede: 'Lo que la gente suele preguntar antes de contratar. Si tu duda no está aquí, pregúntame por WhatsApp.',
+    items: [
+      {
+        q: '¿Cuánto dura un show?',
+        a: 'Depende del formato. El show de escena suele durar 45 a 60 minutos. La magia de coctel se hace en pases cortos de 5 a 10 minutos por mesa, durante toda la duración del evento (normalmente 1 a 3 horas). Ambos son ajustables.',
+      },
+      {
+        q: '¿Actúas fuera de A Coruña?',
+        a: 'Sí, sobre todo. Vivo en A Coruña pero el trabajo me lleva a giras por España, Europa, Latinoamérica y a los cruceros internacionales de Virgin Voyages. Los desplazamientos se acuerdan por adelantado y se incluyen en el presupuesto.',
+      },
+      {
+        q: '¿En qué idiomas actúas?',
+        a: 'Español y galego con fluidez, inglés a nivel de escena. La magia de escena tiene fragmentos que funcionan sin palabras, así que también se adapta a un público mixto o internacional.',
+      },
+      {
+        q: '¿Qué necesitas del recinto?',
+        a: 'Para escena: sonido básico, luz frontal y un espacio de 4×3 m mínimo. Puedo llegar con equipo propio si el recinto no tiene. Para coctel: nada, solo mesas donde acercarme a la gente.',
+      },
+      {
+        q: '¿Cuánto cuesta?',
+        a: 'Cada evento es distinto (aforo, duración, desplazamiento, requisitos técnicos). Suelo mandar presupuesto en menos de 24 horas después de conocer los detalles. Escríbeme y hablamos.',
+      },
+      {
+        q: '¿Y si el evento tiene niños?',
+        a: 'No hago magia infantil. Mi show funciona con público adulto o mixto a partir de unos 12 años. Si el evento es enteramente familiar con niños pequeños, te recomendaré a alguien especializado.',
+      },
+      {
+        q: '¿Puedes actuar en televisión / vídeos?',
+        a: 'Sí. Tengo experiencia trabajando con equipo de cámara y adapto la ejecución a los ángulos y ritmos que necesita el rodaje. Escríbeme con los detalles del proyecto.',
+      },
+    ],
+  },
+  en: {
+    kicker: 'Frequently asked',
+    title: 'Before you write.',
+    lede: 'What people usually ask before booking. If your question isn\'t here, ping me on WhatsApp.',
+    items: [
+      {
+        q: 'How long is a show?',
+        a: 'Depends on the format. Stage shows run 45 to 60 minutes. Cocktail magic works in short sets of 5 to 10 minutes per table, across the length of the event (typically 1 to 3 hours). Both are adjustable.',
+      },
+      {
+        q: 'Do you perform outside A Coruña?',
+        a: 'Most of the time, yes. I live in A Coruña but the work takes me across Spain, Europe, Latin America and Virgin Voyages\' international cruise routes. Travel is agreed upfront and included in the quote.',
+      },
+      {
+        q: 'What languages do you perform in?',
+        a: 'Spanish and Galician fluently, English at stage level. The stage show has passages that work without words, so it adapts well to mixed or international audiences.',
+      },
+      {
+        q: 'What do you need from the venue?',
+        a: 'Stage: basic sound, front lighting, and a 4×3 m minimum area. I can bring my own rig if the venue has none. Cocktail: nothing — just tables to walk up to.',
+      },
+      {
+        q: 'How much does it cost?',
+        a: 'Every event is different (audience size, length, travel, tech requirements). I typically send a quote within 24 hours of hearing the details. Get in touch and we\'ll talk.',
+      },
+      {
+        q: 'What if the event has children?',
+        a: 'I don\'t do children\'s magic. My show works with adult or mixed audiences from about 12 upwards. If the event is fully family with young kids, I\'ll point you to someone specialised.',
+      },
+      {
+        q: 'Can you perform on TV / on camera?',
+        a: 'Yes. I have experience working with camera crews and adapt the execution to the angles and pacing the shoot needs. Write with the project details.',
+      },
+    ],
+  },
+}[lang];
+---
+
+<section class="faq section" id="preguntas" aria-labelledby="faq-title">
+  <div class="container faq-grid">
+    <header class="faq-header">
+      <div class="kicker reveal">
+        <span class="kicker-line"></span>
+        <span>{t.kicker}</span>
+      </div>
+      <h2 id="faq-title" class="type-display reveal reveal-delay-1">{t.title}</h2>
+      <p class="faq-lede type-body reveal reveal-delay-2">{t.lede}</p>
+    </header>
+
+    <div class="faq-list">
+      {t.items.map((item, i) => (
+        <details class={`faq-item reveal reveal-delay-${Math.min(i + 1, 5)}`} name="faq">
+          <summary class="faq-summary">
+            <span class="faq-question">{item.q}</span>
+            <span class="faq-toggle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <line x1="12" y1="6" x2="12" y2="18" class="faq-toggle-v"/>
+                <line x1="6" y1="12" x2="18" y2="12"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--surface-ink);
+    position: relative;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .faq-grid {
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+  }
+
+  .faq-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  @media (max-width: 899px) {
+    .faq-header { position: static; }
+  }
+
+  .faq-lede {
+    color: var(--ink-body);
+    max-width: 40ch;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--stroke-soft);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--stroke-soft);
+  }
+
+  .faq-item[open] {
+    background: color-mix(in oklch, var(--surface-raised) 30%, transparent);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    list-style: none;
+    transition: color var(--dur-fast);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .faq-summary::-webkit-details-marker,
+  .faq-summary::marker { display: none; content: ''; }
+
+  .faq-summary:hover { color: var(--crimson); }
+
+  .faq-question {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: var(--ink-primary);
+    max-width: 42ch;
+    transition: color var(--dur-fast);
+  }
+
+  .faq-summary:hover .faq-question { color: var(--crimson); }
+
+  .faq-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1px solid var(--stroke-medium);
+    color: var(--ink-muted);
+    flex-shrink: 0;
+    transition: transform var(--dur-med) var(--ease-out-quart), color var(--dur-fast), border-color var(--dur-fast), background-color var(--dur-fast);
+  }
+
+  .faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+    color: var(--ink-primary);
+    border-color: var(--crimson);
+    background: var(--crimson);
+  }
+
+  .faq-item[open] .faq-toggle-v {
+    stroke-opacity: 0;
+  }
+
+  .faq-answer {
+    padding: 0 0 1.75rem 0;
+    max-width: 60ch;
+    animation: faqSlide 400ms var(--ease-out-quart);
+  }
+
+  .faq-answer p {
+    color: var(--ink-body);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  @keyframes faqSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-answer { animation: none; }
+    .faq-toggle { transition: none; }
+  }
+</style>

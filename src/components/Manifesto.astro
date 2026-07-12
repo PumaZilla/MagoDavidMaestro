@@ -1,0 +1,161 @@
+---
+import Spade from './Spade.astro';
+
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    label: 'Manifiesto',
+    lineA: 'La mejor magia',
+    lineB: 'no engaña a los ojos.',
+    lineC: 'Despierta la',
+    accent: 'imaginación',
+    footer: 'David Maestro · Ilusionista',
+  },
+  en: {
+    label: 'Manifesto',
+    lineA: 'The best magic',
+    lineB: 'doesn\'t deceive the eyes.',
+    lineC: 'It awakens the',
+    accent: 'imagination',
+    footer: 'David Maestro · Illusionist',
+  },
+}[lang];
+---
+
+<section class="manifesto" aria-label={t.label}>
+  <div class="manifesto-spade" aria-hidden="true">
+    <Spade size="100%" />
+  </div>
+
+  <div class="manifesto-inner container-reading">
+    <div class="manifesto-label reveal">
+      <span class="manifesto-line-mark"></span>
+      <span>{t.label}</span>
+    </div>
+
+    <p class="manifesto-text">
+      <span class="reveal">{t.lineA}</span>
+      <span class="reveal reveal-delay-1">{t.lineB}</span>
+      <span class="reveal reveal-delay-2">{t.lineC} <em>{t.accent}</em><span class="manifesto-period">.</span></span>
+    </p>
+
+    <div class="manifesto-signature reveal reveal-delay-3">
+      <svg viewBox="0 0 60 1" width="60" height="1" aria-hidden="true">
+        <line x1="0" y1="0.5" x2="60" y2="0.5" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <span>{t.footer}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifesto {
+    position: relative;
+    padding-block: clamp(4rem, 9vw, 7rem);
+    background:
+      linear-gradient(180deg, var(--surface-ink) 0%, transparent 25%, transparent 75%, var(--surface-ink) 100%),
+      url('/img/textures/velvet.webp') center / cover no-repeat,
+      oklch(0.09 0.014 25);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 70%, color-mix(in oklch, var(--crimson-deep) 30%, transparent), transparent 55%),
+      linear-gradient(180deg, color-mix(in oklch, var(--surface-ink) 55%, transparent), color-mix(in oklch, var(--surface-ink) 30%, transparent) 50%, color-mix(in oklch, var(--surface-ink) 60%, transparent));
+    z-index: -1;
+    opacity: 0.9;
+  }
+
+  .manifesto-spade {
+    position: absolute;
+    right: -6vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55vmin;
+    height: 55vmin;
+    color: color-mix(in oklch, var(--crimson-deep) 40%, transparent);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .manifesto-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: left;
+  }
+
+  .manifesto-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    width: fit-content;
+  }
+
+  .manifesto-line-mark {
+    display: inline-block;
+    width: 36px;
+    height: 1px;
+    background: var(--crimson);
+  }
+
+  .manifesto-text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.75rem, 6vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    color: var(--ink-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+  }
+
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--crimson);
+    font-weight: 400;
+  }
+
+  .manifesto-period {
+    color: var(--ink-primary);
+    font-style: normal;
+  }
+
+  .manifesto-text span {
+    display: inline-block;
+  }
+
+  .manifesto-signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 2rem;
+  }
+
+  .manifesto-signature svg {
+    color: var(--ink-quiet);
+  }
+</style>

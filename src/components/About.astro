@@ -1,0 +1,197 @@
+---
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    kicker: 'Sobre mí',
+    title: 'De A Coruña a los escenarios del mundo.',
+    body: [
+      'Soy <strong>David Maestro</strong> (A Coruña, 1997). Descubrí la magia a los nueve años y a los catorce ya era mi profesión.',
+      'A los dieciocho me eligieron entre trece jóvenes magos para competir en <em>Pura Magia</em>, el primer gran talent show de magia de RTVE. Llegué a la final. Después vinieron <em>Hora Punta</em>, varias colaboraciones con televisiones regionales, y otra final en <em>Got Talent España</em>.',
+      'En los últimos años he sido mago residente de <em>Virgin Voyages</em>, actuando en el teatro principal de sus cruceros de lujo con aforos completos y ovaciones de pie. Sir Richard Branson vio uno de esos shows y lo describió como <em>"uno de los mejores que he visto en mi vida"</em>.',
+      'Mi magia se define por la inocencia, el humor y la conexión con el público. Más que crear imposibles, hago que la gente se ría, participe y forme parte del truco desde el primer minuto.',
+    ],
+    signOff: '— David Maestro',
+    altImage: 'David Maestro sonriendo en el escenario de un programa de televisión con luces de marquesina detrás.',
+  },
+  en: {
+    kicker: 'About',
+    title: 'From A Coruña to stages around the world.',
+    body: [
+      'I am <strong>David Maestro</strong> (A Coruña, 1997). I discovered magic at nine. By fourteen it became my professional career.',
+      'At eighteen I was chosen from thirteen young magicians to compete on <em>Pura Magia</em>, RTVE\'s first major magic talent show. I reached the final. Then came <em>Hora Punta</em>, several regional TV collaborations, and a finalist run on <em>Spain\'s Got Talent</em>.',
+      'For the past years I have been the resident magician of <em>Virgin Voyages</em>, performing in the main theatre of their luxury cruise ships to full audiences and standing ovations. Sir Richard Branson watched one of those shows and called it <em>"one of the best shows I\'ve ever seen"</em>.',
+      'My magic is defined by innocence, humour and connection with the audience. More than creating impossible moments, I make people laugh, take part, and feel like part of the trick from the very first minute.',
+    ],
+    signOff: '— David Maestro',
+    altImage: 'David Maestro smiling on stage on a television set framed by marquee lights.',
+  },
+}[lang];
+---
+
+<section class="about section" id="sobre-mi" aria-labelledby="about-title">
+  <div class="about-grid container">
+    <div class="about-media reveal">
+      <div class="about-frame">
+        <img
+          src="/img/about.jpg"
+          alt={t.altImage}
+          width="1440"
+          height="960"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="about-frame-corner about-frame-corner-tl" aria-hidden="true"></div>
+        <div class="about-frame-corner about-frame-corner-br" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="kicker reveal">
+        <span class="kicker-line"></span>
+        <span>{t.kicker}</span>
+      </div>
+
+      <h2 id="about-title" class="type-display reveal reveal-delay-1">
+        {t.title}
+      </h2>
+
+      <div class="about-body">
+        {t.body.map((p, i) => (
+          <p class={`type-body reveal reveal-delay-${i + 2}`} set:html={p} />
+        ))}
+      </div>
+
+      <p class="about-signature reveal reveal-delay-5">{t.signOff}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--surface-ink);
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: 5fr 6fr;
+      gap: clamp(3rem, 6vw, 6rem);
+    }
+  }
+
+  .about-media {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .about-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--surface-raised);
+  }
+
+  @media (min-width: 900px) {
+    .about-frame { aspect-ratio: 3 / 4; }
+  }
+
+  .about-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.05) contrast(1.08);
+    transition: transform 1200ms var(--ease-out-quart);
+  }
+
+  .about-frame:hover img {
+    transform: scale(1.03);
+  }
+
+  .about-frame-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--crimson);
+  }
+
+  .about-frame-corner-tl {
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .about-frame-corner-br {
+    bottom: 12px;
+    right: 12px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    width: fit-content;
+  }
+
+  .kicker-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--crimson);
+  }
+
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    margin-top: 0.5rem;
+  }
+
+  .about-body :global(strong) {
+    color: var(--ink-primary);
+    font-weight: 600;
+  }
+
+  .about-body :global(em) {
+    font-style: italic;
+    color: var(--crimson);
+    font-weight: 500;
+  }
+
+  .about-signature {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--crimson);
+    margin-top: 0.5rem;
+  }
+</style>

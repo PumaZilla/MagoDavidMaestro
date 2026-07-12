@@ -1,0 +1,212 @@
+---
+import Spade from './Spade.astro';
+
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    tagline: 'Ilusionista basado en A Coruña.',
+    reserved: 'Todos los derechos reservados.',
+    links: [
+      { label: 'WhatsApp', href: 'https://wa.me/34677652984' },
+      { label: 'Email', href: 'mailto:info@magodavidmaestro.com' },
+      { label: 'Instagram', href: 'https://instagram.com/davidmaestromago' },
+      { label: 'Facebook', href: 'https://facebook.com/davidmaestromago' },
+    ],
+    legal: [
+      { label: 'Aviso legal', href: '/es/legal/#legal-notice' },
+      { label: 'Privacidad', href: '/es/legal/#privacy' },
+      { label: 'Cookies', href: '/es/legal/#cookies' },
+    ],
+    back: 'Volver arriba',
+  },
+  en: {
+    tagline: 'Illusionist based in A Coruña.',
+    reserved: 'All rights reserved.',
+    links: [
+      { label: 'WhatsApp', href: 'https://wa.me/34677652984' },
+      { label: 'Email', href: 'mailto:info@magodavidmaestro.com' },
+      { label: 'Instagram', href: 'https://instagram.com/davidmaestromago' },
+      { label: 'Facebook', href: 'https://facebook.com/davidmaestromago' },
+    ],
+    legal: [
+      { label: 'Legal notice', href: '/legal/#legal-notice' },
+      { label: 'Privacy', href: '/legal/#privacy' },
+      { label: 'Cookies', href: '/legal/#cookies' },
+    ],
+    back: 'Back to top',
+  },
+}[lang];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="footer-mark" aria-hidden="true">
+        <Spade size={56} />
+      </span>
+      <div class="footer-brand-text">
+        <span class="footer-brand-name font-display">David Maestro</span>
+        <span class="footer-tagline">{t.tagline}</span>
+      </div>
+    </div>
+
+    <nav class="footer-links" aria-label="Social">
+      {t.links.map((l) => (
+        <a href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel="noopener">{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="footer-meta">
+      <span>© {year} David Maestro · A Coruña</span>
+      <span>{t.reserved}</span>
+      <nav class="footer-legal" aria-label="Legal">
+        {t.legal.map((l, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true">·</span>}
+            <a href={l.href}>{l.label}</a>
+          </>
+        ))}
+      </nav>
+      <a href="#" class="footer-back">
+        <span>{t.back}</span>
+        <span aria-hidden="true">↑</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: oklch(0.06 0.010 25);
+    border-top: 1px solid var(--stroke-soft);
+    padding-block: clamp(3rem, 5vw, 5rem);
+    color: var(--ink-muted);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .footer-inner {
+      grid-template-columns: 1.2fr 1fr 1fr;
+      align-items: end;
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-mark {
+    color: var(--crimson);
+    flex-shrink: 0;
+  }
+
+  .footer-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer-brand-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--ink-primary);
+  }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .footer-links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    transition: color var(--dur-fast);
+    position: relative;
+  }
+
+  .footer-links a::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -3px 0;
+    height: 1px;
+    background: var(--crimson);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-fast) var(--ease-out-quart);
+  }
+
+  .footer-links a:hover {
+    color: var(--ink-primary);
+  }
+
+  .footer-links a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--ink-quiet);
+  }
+
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding-top: 0.35rem;
+  }
+
+  .footer-legal a {
+    color: var(--ink-muted);
+    transition: color var(--dur-fast);
+  }
+
+  .footer-legal a:hover { color: var(--crimson); }
+
+  .footer-legal span {
+    color: var(--ink-quiet);
+  }
+
+  .footer-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ink-muted);
+    width: fit-content;
+    padding-top: 0.5rem;
+    transition: color var(--dur-fast);
+  }
+
+  .footer-back:hover {
+    color: var(--crimson);
+  }
+</style>

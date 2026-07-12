@@ -1,0 +1,229 @@
+---
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    kicker: 'Media',
+    title: 'Míralo antes de creerlo.',
+    lede: 'Cuatro cortes del canal de David. Empieza por el tráiler de este año.',
+    videos: [
+      { id: 'eROBHCC36xk', title: 'Trailer 2026' },
+      { id: 'hrg_9QQrZgQ', title: 'Recap 2026' },
+      { id: '3AVY_8l8sz0', title: 'Trailer 2025' },
+      { id: 'mt68nUVAWn8', title: 'Promo TV' },
+    ],
+  },
+  en: {
+    kicker: 'Media',
+    title: 'See it before you believe it.',
+    lede: 'Four cuts from David\'s channel. Start with this year\'s trailer.',
+    videos: [
+      { id: 'eROBHCC36xk', title: 'Trailer 2026' },
+      { id: 'hrg_9QQrZgQ', title: 'Recap 2026' },
+      { id: '3AVY_8l8sz0', title: 'Trailer 2025' },
+      { id: 'mt68nUVAWn8', title: 'TV Promo' },
+    ],
+  },
+}[lang];
+---
+
+<section class="reel section" id="reel" aria-labelledby="reel-title">
+  <div class="container">
+    <header class="reel-header">
+      <div class="kicker reveal">
+        <span class="kicker-line"></span>
+        <span>{t.kicker}</span>
+      </div>
+      <h2 id="reel-title" class="type-display reveal reveal-delay-1">{t.title}</h2>
+      <p class="reel-lede type-body reveal reveal-delay-2">{t.lede}</p>
+    </header>
+
+    <div class="reel-grid">
+      {t.videos.map((v, i) => (
+        <div class={`reel-item reveal reveal-delay-${i + 1}`}>
+          <button
+            type="button"
+            class="reel-poster"
+            data-video-id={v.id}
+            aria-label={`${t.title} — ${v.title}`}
+          >
+            <img
+              src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width="480"
+              height="360"
+            />
+            <span class="reel-poster-scrim" aria-hidden="true"></span>
+            <span class="reel-poster-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <polygon points="6 4 20 12 6 20 6 4"/>
+              </svg>
+            </span>
+          </button>
+          <div class="reel-caption">
+            <span class="reel-caption-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="reel-caption-title">{v.title}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.reel-poster').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.videoId;
+      if (!id) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', 'true');
+      iframe.setAttribute('title', btn.getAttribute('aria-label') || 'Video');
+      iframe.setAttribute('loading', 'lazy');
+      iframe.className = 'reel-iframe';
+      btn.replaceWith(iframe);
+    });
+  });
+</script>
+
+<style>
+  .reel {
+    background: var(--surface-ink);
+    position: relative;
+  }
+
+  .reel-header {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .reel-lede {
+    color: var(--ink-body);
+    max-width: 55ch;
+  }
+
+  .reel-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  @media (min-width: 900px) {
+    .reel-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .reel-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .reel-poster,
+  :global(.reel-iframe) {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--stroke-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface-raised);
+    cursor: pointer;
+    transition: border-color var(--dur-med), transform var(--dur-med) var(--ease-out-quart);
+    padding: 0;
+  }
+
+  :global(.reel-iframe) {
+    border: 1px solid var(--stroke-medium);
+  }
+
+  .reel-poster img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease-out-quart), filter 900ms;
+    filter: saturate(0.95) contrast(1.05) brightness(0.85);
+  }
+
+  .reel-poster:hover img,
+  .reel-poster:focus-visible img {
+    transform: scale(1.05);
+    filter: saturate(1.1) contrast(1.1) brightness(1);
+  }
+
+  .reel-poster-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(140deg, transparent 40%, color-mix(in oklch, var(--surface-ink) 70%, transparent) 100%);
+    transition: opacity var(--dur-med);
+  }
+
+  .reel-poster:hover .reel-poster-scrim {
+    opacity: 0.7;
+  }
+
+  .reel-poster-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background: var(--crimson);
+    color: var(--ink-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0 var(--crimson);
+    transition: transform var(--dur-med) var(--ease-out-quart), box-shadow var(--dur-med), background-color var(--dur-fast);
+  }
+
+  .reel-poster:hover .reel-poster-play {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 60px -5px var(--crimson-hot);
+    background: var(--crimson-hot);
+  }
+
+  .reel-poster-play svg {
+    margin-left: 3px;
+  }
+
+  .reel-caption {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    font-family: var(--font-body);
+  }
+
+  .reel-caption-index {
+    color: var(--ink-quiet);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .reel-caption-title {
+    color: var(--ink-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+</style>

@@ -1,0 +1,588 @@
+---
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    kicker: 'Los shows',
+    title: 'Dos formas de dejar a la gente sin palabras.',
+    lede: 'Elige el formato que encaja con tu evento. Ambos se adaptan a la sala, al idioma y al tono. Ninguno de los dos incluye conejos.',
+    scrollHint: 'Desliza',
+    shows: [
+      {
+        code: '01',
+        title: 'Magia de escena',
+        subtitle: 'Un show para llenar un teatro.',
+        body: 'Un espectáculo pensado para un escenario. Grandes ilusiones, momentos de mentalismo, humor negro y un ritmo que respira. Se adapta al sonido y luces del recinto o llega con equipo propio.',
+        contexts: ['Teatros', 'Congresos', 'Galas corporativas', 'Cruceros'],
+        image: '/img/stage.jpg',
+        alt: 'David Maestro en el backstage antes de un show de escena.',
+        cta: 'Contratar show de escena',
+        anchor: 'escena',
+        specs: [
+          { label: 'Duración', value: '45–60 min', hint: 'Ajustable' },
+          { label: 'Aforo', value: 'Hasta 800', hint: 'Teatro estándar' },
+          { label: 'Equipo', value: 'Autónomo', hint: 'O adaptado' },
+          { label: 'Idiomas', value: 'ES · EN', hint: 'Y sin palabras' },
+        ],
+        pull: 'Un mago que respeta el escenario.',
+      },
+      {
+        code: '02',
+        title: 'Magia de coctel',
+        subtitle: 'Magia de cerca, mesa por mesa.',
+        body: 'La magia a un palmo de las manos del espectador. Ideal para eventos privados, restaurantes, bodas y celebraciones donde el público se mueve libremente. Apariciones cortas, mesa por mesa.',
+        contexts: ['Bodas', 'Restaurantes', 'Cócteles corporativos', 'Fiestas privadas'],
+        image: '/img/cocktail.jpg',
+        alt: 'Un reloj de bolsillo suspendido de una cadena en manos de David Maestro.',
+        cta: 'Contratar coctel',
+        anchor: 'coctel',
+        specs: [
+          { label: 'Duración', value: '5–10 min', hint: 'Por mesa' },
+          { label: 'Aforo', value: 'Hasta 200', hint: 'Ideal grupos pequeños' },
+          { label: 'Equipo', value: 'Ninguno', hint: 'Solo mis manos' },
+          { label: 'Idiomas', value: 'ES · EN', hint: 'A la carta' },
+        ],
+        pull: 'A un palmo de tus manos.',
+      },
+    ],
+  },
+  en: {
+    kicker: 'The shows',
+    title: 'Two ways to leave the room speechless.',
+    lede: 'Pick the format that fits your event. Both adapt to the venue, the language, and the tone. Neither of them involves rabbits.',
+    scrollHint: 'Scroll',
+    shows: [
+      {
+        code: '01',
+        title: 'Stage magic',
+        subtitle: 'A show built to fill a theatre.',
+        body: 'A show designed for a stage. Grand illusions, moments of mentalism, dry humour, and a rhythm that breathes. Adapts to your venue\'s sound and lights, or arrives with its own rig.',
+        contexts: ['Theatres', 'Conferences', 'Corporate galas', 'Cruises'],
+        image: '/img/stage.jpg',
+        alt: 'David Maestro backstage before a stage show.',
+        cta: 'Book stage show',
+        anchor: 'escena',
+        specs: [
+          { label: 'Length', value: '45–60 min', hint: 'Adjustable' },
+          { label: 'Capacity', value: 'Up to 800', hint: 'Standard theatre' },
+          { label: 'Rig', value: 'Self-contained', hint: 'Or adapted' },
+          { label: 'Languages', value: 'ES · EN', hint: 'And silent' },
+        ],
+        pull: 'A magician who respects the stage.',
+      },
+      {
+        code: '02',
+        title: 'Cocktail magic',
+        subtitle: 'Close-up magic, table by table.',
+        body: 'Magic a hand\'s width from the audience. Perfect for private events, restaurants, weddings and celebrations where guests move freely. Short sets, table by table.',
+        contexts: ['Weddings', 'Restaurants', 'Corporate cocktails', 'Private parties'],
+        image: '/img/cocktail.jpg',
+        alt: 'A pocket watch on a chain suspended from David Maestro\'s hand.',
+        cta: 'Book cocktail set',
+        anchor: 'coctel',
+        specs: [
+          { label: 'Length', value: '5–10 min', hint: 'Per table' },
+          { label: 'Capacity', value: 'Up to 200', hint: 'Ideal for small groups' },
+          { label: 'Rig', value: 'None', hint: 'Only my hands' },
+          { label: 'Languages', value: 'ES · EN', hint: 'On request' },
+        ],
+        pull: 'A hand\'s width from your face.',
+      },
+    ],
+  },
+}[lang];
+---
+
+<section class="shows" id="shows" aria-labelledby="shows-title" data-shows-root>
+  <div class="container">
+    <header class="shows-header">
+      <div class="kicker reveal">
+        <span class="kicker-line"></span>
+        <span>{t.kicker}</span>
+      </div>
+      <h2 id="shows-title" class="type-display reveal reveal-delay-1">{t.title}</h2>
+      <p class="shows-lede type-body reveal reveal-delay-2">{t.lede}</p>
+    </header>
+  </div>
+
+  <div class="shows-pin container">
+    <div class="shows-pin-inner">
+      <div class="shows-media" aria-hidden="true">
+        {t.shows.map((show, i) => (
+          <div class="shows-media-slot" data-show-media={i}>
+            <picture>
+              <source srcset={show.image.replace('.jpg', '.webp')} type="image/webp" />
+              <img
+                src={show.image}
+                alt={show.alt}
+                width="1440"
+                height="1920"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="shows-media-scrim"></div>
+            <div class="shows-media-code">{show.code}</div>
+          </div>
+        ))}
+        <div class="shows-media-progress" aria-hidden="true">
+          <span class="shows-media-progress-fill" data-progress></span>
+        </div>
+      </div>
+
+      <div class="shows-panels">
+        {t.shows.map((show, i) => (
+          <article class="show-panel" id={show.anchor} data-show-panel={i}>
+            <div class="show-meta">
+              <span class="show-code-lg">{show.code}</span>
+              <span class="show-code-line" aria-hidden="true"></span>
+              <span class="show-code-total">/ {t.shows.length.toString().padStart(2, '0')}</span>
+            </div>
+
+            <h3 class="show-title font-display">{show.title}</h3>
+            <p class="show-subtitle">{show.subtitle}</p>
+
+            <div class="show-mobile-media">
+              <picture>
+                <source srcset={show.image.replace('.jpg', '.webp')} type="image/webp" />
+                <img
+                  src={show.image}
+                  alt={show.alt}
+                  width="720"
+                  height="960"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+
+            <p class="show-body">{show.body}</p>
+
+            <ul class="show-specs" aria-label={show.subtitle}>
+              {show.specs.map((s) => (
+                <li class="show-spec">
+                  <span class="show-spec-label">{s.label}</span>
+                  <span class="show-spec-value">{s.value}</span>
+                  <span class="show-spec-hint">{s.hint}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="show-contexts-wrap">
+              <span class="show-contexts-label">{lang === 'es' ? 'Ideal para' : 'Ideal for'}</span>
+              <ul class="show-contexts">
+                {show.contexts.map((c) => <li>{c}</li>)}
+              </ul>
+            </div>
+
+            <p class="show-pull font-display-italic">"{show.pull}"</p>
+
+            <a href="#contacto" class="show-cta">
+              <span>{show.cta}</span>
+              <span class="show-cta-arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector('[data-shows-root]') as HTMLElement | null;
+  if (root) {
+    const mql = window.matchMedia('(min-width: 900px)');
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-show-panel]'));
+    const mediaSlots = Array.from(root.querySelectorAll<HTMLElement>('[data-show-media]'));
+    const progress = root.querySelector<HTMLElement>('[data-progress]');
+
+    const setActive = (i: number, ratio = 1) => {
+      mediaSlots.forEach((slot, j) => {
+        const active = j === i;
+        slot.classList.toggle('is-active', active);
+      });
+      if (progress) {
+        const total = panels.length;
+        const p = ((i + ratio) / total) * 100;
+        progress.style.setProperty('--p', `${Math.min(100, Math.max(0, p))}%`);
+      }
+    };
+
+    if (mql.matches && 'IntersectionObserver' in window) {
+      setActive(0, 0);
+      const io = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) {
+            const idx = Number((visible.target as HTMLElement).dataset.showPanel);
+            setActive(idx, visible.intersectionRatio);
+          }
+        },
+        { rootMargin: '-40% 0px -40% 0px', threshold: [0.1, 0.5, 0.9] },
+      );
+      panels.forEach((p) => io.observe(p));
+    } else {
+      mediaSlots.forEach((slot) => slot.classList.add('is-active'));
+    }
+  }
+</script>
+
+<style>
+  .shows {
+    background: linear-gradient(180deg, oklch(0.09 0.014 25) 0%, var(--surface-ink) 15%);
+    position: relative;
+    padding-block: var(--section-gap);
+  }
+
+  .shows-header {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .shows-lede {
+    color: var(--ink-body);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+
+  /* ============================================================
+     Pinned-scroll layout (desktop)
+     ============================================================ */
+
+  .shows-pin { position: relative; }
+
+  .shows-pin-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .shows-media {
+    display: none;
+  }
+
+  .shows-media-slot { display: none; }
+
+  .shows-panels {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 8vw, 8rem);
+  }
+
+  @media (min-width: 900px) {
+    .shows-pin-inner {
+      grid-template-columns: 5fr 6fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .shows-media {
+      display: block;
+      position: sticky;
+      top: 6rem;
+      aspect-ratio: 3 / 4;
+      max-height: calc(100vh - 8rem);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface-raised);
+    }
+
+    .shows-media-slot {
+      position: absolute;
+      inset: 0;
+      display: block;
+      opacity: 0;
+      transition: opacity 700ms var(--ease-out-quart), transform 900ms var(--ease-out-quart);
+      transform: scale(1.03);
+    }
+
+    .shows-media-slot.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .shows-media-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .shows-media-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, color-mix(in oklch, var(--surface-ink) 55%, transparent) 100%);
+      pointer-events: none;
+    }
+
+    .shows-media-code {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(6rem, 10vw, 10rem);
+      line-height: 0.85;
+      color: var(--ink-primary);
+      opacity: 0.14;
+      letter-spacing: -0.06em;
+      pointer-events: none;
+    }
+
+    .shows-media-progress {
+      position: absolute;
+      left: 1.5rem;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      height: 2px;
+      background: color-mix(in oklch, var(--ink-primary) 15%, transparent);
+      border-radius: 999px;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .shows-media-progress-fill {
+      display: block;
+      height: 100%;
+      width: var(--p, 0%);
+      background: var(--crimson);
+      transition: width 320ms var(--ease-out-quart);
+    }
+
+    .shows-panels {
+      gap: clamp(6rem, 15vw, 15rem);
+      padding-block: clamp(3rem, 6vw, 6rem);
+    }
+  }
+
+  /* ============================================================
+     Panels
+     ============================================================ */
+
+  .show-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    scroll-margin-top: 6rem;
+  }
+
+  .show-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--ink-muted);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .show-code-lg {
+    color: var(--crimson);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.75rem;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+
+  .show-code-line {
+    flex: 1;
+    height: 1px;
+    background: var(--stroke-soft);
+  }
+
+  .show-code-total {
+    color: var(--ink-quiet);
+  }
+
+  .show-title {
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--ink-primary);
+    margin-top: 0.25rem;
+  }
+
+  .show-subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+    color: var(--crimson);
+    line-height: 1.3;
+    max-width: 30ch;
+  }
+
+  .show-mobile-media {
+    display: block;
+    margin-block: 1rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+  }
+
+  .show-mobile-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 900px) {
+    .show-mobile-media { display: none; }
+  }
+
+  .show-body {
+    color: var(--ink-body);
+    max-width: 50ch;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  /* Spec cards, iyO-style modular grid */
+  .show-specs {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--stroke-soft);
+    border-bottom: 1px solid var(--stroke-soft);
+    padding-block: 1.5rem;
+  }
+
+  .show-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-right: 1rem;
+    position: relative;
+  }
+
+  .show-spec + .show-spec::before {
+    content: '';
+    position: absolute;
+    left: -0.375rem;
+    top: 0.35rem;
+    bottom: 0.35rem;
+    width: 1px;
+    background: var(--stroke-soft);
+  }
+
+  .show-spec-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+  }
+
+  .show-spec-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    color: var(--ink-primary);
+    line-height: 1;
+  }
+
+  .show-spec-hint {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  .show-contexts-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+  }
+
+  .show-contexts-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+  }
+
+  .show-contexts {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .show-contexts li {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--ink-primary);
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--stroke-medium);
+    border-radius: var(--radius-pill);
+    background: color-mix(in oklch, var(--surface-raised) 55%, transparent);
+  }
+
+  .show-pull {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+    color: var(--ink-muted);
+    line-height: 1.35;
+    max-width: 32ch;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--crimson);
+  }
+
+  .show-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-primary);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    padding: 0.85rem 1.35rem;
+    border: 1px solid var(--stroke-strong);
+    border-radius: var(--radius-pill);
+    width: fit-content;
+    background: color-mix(in oklch, var(--surface-raised) 55%, transparent);
+    transition: color var(--dur-fast), border-color var(--dur-fast), background-color var(--dur-fast), transform var(--dur-fast) var(--ease-out-quart);
+  }
+
+  .show-cta:hover {
+    color: var(--ink-primary);
+    border-color: var(--crimson);
+    background: var(--crimson);
+    transform: translateY(-1px);
+  }
+
+  .show-cta-arrow {
+    transition: transform var(--dur-fast) var(--ease-out-quart);
+  }
+
+  .show-cta:hover .show-cta-arrow {
+    transform: translateX(4px);
+  }
+</style>

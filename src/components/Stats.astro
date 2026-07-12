@@ -1,0 +1,155 @@
+---
+export interface Props {
+  lang: 'es' | 'en';
+}
+const { lang } = Astro.props;
+
+const t = {
+  es: {
+    kicker: 'En cifras',
+    lede: 'Un mago mide su carrera en salas llenas.',
+    stats: [
+      { number: '1000+', label: 'Shows en vivo', hint: 'Y contando' },
+      { number: '40+', label: 'Nacionalidades', hint: 'Del Caribe a Asia' },
+      { number: '15', label: 'Años como pro', hint: 'Desde los 14' },
+      { number: '2', label: 'Finales de TV', hint: 'Pura Magia · Got Talent' },
+    ],
+  },
+  en: {
+    kicker: 'By the numbers',
+    lede: 'A magician measures his career in packed rooms.',
+    stats: [
+      { number: '1000+', label: 'Live shows', hint: 'And counting' },
+      { number: '40+', label: 'Nationalities', hint: 'From Caribbean to Asia' },
+      { number: '15', label: 'Years as a pro', hint: 'Since he was 14' },
+      { number: '2', label: 'National TV finals', hint: 'Pura Magia · Got Talent' },
+    ],
+  },
+}[lang];
+---
+
+<section class="stats" aria-labelledby="stats-title">
+  <div class="container stats-inner">
+    <header class="stats-header">
+      <div class="kicker reveal">
+        <span class="kicker-line"></span>
+        <span>{t.kicker}</span>
+      </div>
+      <h2 id="stats-title" class="stats-lede reveal reveal-delay-1">{t.lede}</h2>
+    </header>
+
+    <ul class="stats-grid" role="list">
+      {t.stats.map((s, i) => (
+        <li class={`stat reveal reveal-delay-${i + 1}`}>
+          <span class="stat-number">{s.number}</span>
+          <span class="stat-label">{s.label}</span>
+          <span class="stat-hint">{s.hint}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats {
+    background: var(--surface-ink);
+    padding-block: clamp(4rem, 8vw, 7rem);
+    border-top: 1px solid var(--stroke-soft);
+    border-bottom: 1px solid var(--stroke-soft);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 50%, color-mix(in oklch, var(--crimson-deep) 12%, transparent), transparent 40%);
+    pointer-events: none;
+  }
+
+  .stats-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: end;
+    position: relative;
+  }
+
+  @media (min-width: 900px) {
+    .stats-inner {
+      grid-template-columns: 5fr 7fr;
+    }
+  }
+
+  .stats-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .stats-lede {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    color: var(--ink-primary);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+
+  .stats-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--stroke-soft);
+    position: relative;
+    transition: border-color var(--dur-fast);
+  }
+
+  .stat:hover { border-left-color: var(--crimson); }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 4.5vw, 4rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    color: var(--ink-primary);
+    white-space: nowrap;
+  }
+
+  .stat-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 0.5rem;
+  }
+
+  .stat-hint {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--ink-quiet);
+    font-style: italic;
+  }
+</style>

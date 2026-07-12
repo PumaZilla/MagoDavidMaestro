@@ -1,0 +1,93 @@
+---
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'en' } = Astro.props;
+const siteUrl = 'https://magodavidmaestro.com';
+
+// Reviews from TV judges and celebrity endorsement
+const reviews = [
+  {
+    author: 'Risto Mejide',
+    role: lang === 'es' ? 'Got Talent España' : 'Spain\'s Got Talent',
+    text: lang === 'es'
+      ? 'Esto no lo había visto nunca antes. Increíble.'
+      : 'I have never seen anything like this before. Incredible.',
+    rating: 5,
+  },
+  {
+    author: 'Edurne',
+    role: lang === 'es' ? 'Got Talent España' : 'Spain\'s Got Talent',
+    text: lang === 'es'
+      ? 'Lo que acaba de pasar aquí, no tiene sentido.'
+      : 'What just happened here makes no sense.',
+    rating: 5,
+  },
+  {
+    author: 'Paz Padilla',
+    role: 'Pura Magia · RTVE',
+    text: lang === 'es'
+      ? 'Yo he trabajado con magos… pero esto que acabas de hacer es espectacular.'
+      : 'I have worked with magicians before… but what you just did is spectacular.',
+    rating: 5,
+  },
+  {
+    author: 'Mónica Naranjo',
+    role: lang === 'es' ? 'Got Talent España' : 'Spain\'s Got Talent',
+    text: lang === 'es'
+      ? 'Esto es absolutamente imposible.'
+      : 'This is absolutely impossible.',
+    rating: 5,
+  },
+  {
+    author: 'Sir Richard Branson',
+    role: lang === 'es' ? 'Fundador de Virgin Group' : 'Founder of Virgin Group',
+    text: 'One of the best shows I\'ve ever seen.',
+    rating: 5,
+  },
+];
+
+const reviewSchemas = reviews.map((review) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: review.rating,
+    bestRating: 5,
+  },
+  author: {
+    '@type': 'Person',
+    name: review.author,
+  },
+  reviewBody: review.text,
+  itemReviewed: {
+    '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
+    name: 'David Maestro',
+  },
+}));
+
+// Aggregate rating based on the reviews
+const aggregateRating = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${siteUrl}/#person`,
+  name: 'David Maestro',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: 5,
+    reviewCount: reviews.length,
+    bestRating: 5,
+    worstRating: 5,
+  },
+};
+---
+
+<!-- Individual Review Schemas -->
+{reviewSchemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}
+
+<!-- Aggregate Rating -->
+<script type="application/ld+json" set:html={JSON.stringify(aggregateRating)} />
