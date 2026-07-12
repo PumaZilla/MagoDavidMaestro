@@ -1,0 +1,14 @@
+{
+  "name": "David Maestro",
+  "short_name": "D. Maestro",
+  "description": "Ilusionista y mago profesional. Escena, cerca, televisión y cruceros.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1c0e0e",
+  "theme_color": "#1c0e0e",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

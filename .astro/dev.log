@@ -1,0 +1,215 @@
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 0ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":" astro  v7.0.6 ready in 459 ms\n┃ Local    http://localhost:4321/\n┃ Network  use --host to expose","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] / 18ms","label":null,"level":"info"}
+{"message":"[200] /en/ 10ms","label":null,"level":"info"}
+{"message":"[200] / 3ms","label":null,"level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"[200] / 12ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[console.error] Astro Error while running audit's match function: TypeError: Failed to fetch","label":"vite","level":"error"}
+{"message":"[200] / 6ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"[200] / 4ms","label":null,"level":"info"}
+{"message":"[200] / 4ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"src/layouts/Base.astro","label":"watch","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"[200] / 16ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /en/ 11ms","label":null,"level":"info"}
+{"message":"scraped/index.html","label":"watch","level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] / 12ms","label":null,"level":"info"}
+{"message":"[200] /en/ 2ms","label":null,"level":"info"}
+{"message":"[200] /gracias/ 7ms","label":null,"level":"info"}
+{"message":"[200] /en/gracias/ 7ms","label":null,"level":"info"}
+{"message":"[404] /404 8ms","label":null,"level":"info"}
+{"message":"[404] /sitemap-index.xml 1ms","label":null,"level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file removed. Restarting...","label":null,"level":"info"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"www/index.html","label":"watch","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file added. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"www/index.html","label":"watch","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file removed. Restarting...","label":null,"level":"info"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"www/index.html","label":"watch","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file added. Restarting...","label":null,"level":"info"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"www/index.html","label":"watch","level":"info"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because lockfile has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"Configuration file removed. Restarting...","label":null,"level":"info"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"changed tsconfig file detected: /Users/pumita/Documents/Proyectos/magodavidmaestro.com/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"An error happened during full reload\nFailed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\nError: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?\n    at loadAndTransform (file:///Users/pumita/Documents/Proyectos/magodavidmaestro.com/node_modules/vite/dist/node/chunks/node.js:19718:31)","label":"vite","level":"error"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":"index.html","label":"watch","level":"info"}
+{"message":"www/index.html","label":"watch","level":"info"}

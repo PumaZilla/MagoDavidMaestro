@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "entries": {
+    "https://magodavidmaestro.com/es/gracias": "sha256:6b0cc298099e2bf3f2c3aab88cbe256c90071c3121a83f879613c6f669fd05aa",
+    "https://magodavidmaestro.com/es": "sha256:08516a29d9c6d18ae92745afeb61262015de5fea96f7f6eae3ca01b7fccd8382",
+    "https://magodavidmaestro.com/es/legal": "sha256:351c352032c12a386009a8b3eb43606a9fe3a5540df9eda665f5a881693431b1",
+    "https://magodavidmaestro.com/gracias": "sha256:591b040e36433799f662fd104f72ad31975b5099404dd0bdaa814d942d225b8e",
+    "https://magodavidmaestro.com/": "sha256:bbd8298bbe76dda07310a1cccc42f6ee25494a0d092672d7ec0cb1229e6899f2",
+    "https://magodavidmaestro.com/legal": "sha256:5bc56c8aa772087f56dc13446a92ca300e09c6824f55ff96d93e9ef599de06d1"
+  }
+}
